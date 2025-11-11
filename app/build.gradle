@@ -1,0 +1,73 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    namespace 'com.example.delivertrack'
+    compileSdk = 36
+
+    defaultConfig {
+        applicationId "com.example.delivertrack"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.3" // Compose compiler version
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    packagingOptions {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
+}
+
+dependencies {
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.9.0'
+
+    // Compose
+    implementation 'androidx.compose.ui:ui:1.9.4'
+    implementation 'androidx.compose.material3:material3:1.4.0'
+    implementation 'androidx.compose.ui:ui-tooling-preview:1.9.4'
+    debugImplementation 'androidx.compose.ui:ui-tooling:1.9.4'
+
+    // Activity Compose
+    implementation 'androidx.activity:activity-compose:1.11.0'
+
+    // Navigation Compose
+    implementation 'androidx.navigation:navigation-compose:2.9.6'
+
+    // Lifecycle / ViewModel
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.9.4'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.9.4'
+
+    // Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2'
+
+    // Room
+    implementation "androidx.room:room-runtime:${rootProject.ext.room_version}"
+    kapt "androidx.room:room-compiler:2.8.3"
+    implementation "androidx.room:room-ktx:${rootProject.ext.room_version}"
+
+    // Hilt
+    implementation "com.google.dagger:hilt-android:${rootProject.ext.hilt_version}"
+    kapt "com.google.dagger:hilt-android-compiler:${rootProject.ext.hilt_version}"
+    implementation 'androidx.hilt:hilt-navigation-compose:1.3.0'
+
+    // Optional: material icons
+    implementation 'androidx.compose.material:material-icons-extended:1.7.8'
+}
